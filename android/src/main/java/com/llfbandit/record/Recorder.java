@@ -53,14 +53,18 @@ class Recorder {
   }
 
   private void stopRecording() {
-    if (recorder != null) {
-      Log.d(LOG_TAG, "Stop recording");
+    try {
+        if (recorder != null) {
+            Log.d(LOG_TAG, "Stop recording");
 
-      recorder.stop();
-      recorder.reset();
-      recorder.release();
-      recorder = null;
-      isRecording = false;
+            recorder.stop();
+            recorder.reset();
+            recorder.release();
+            recorder = null;
+            isRecording = false;
+        }
+    } catch (Exception e) {
+        Log.e("stopRecording Exception", e.toString());
     }
   }
 
